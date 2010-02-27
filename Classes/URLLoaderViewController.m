@@ -13,7 +13,7 @@
 
 #import "URLLoaderViewController.h"
 #import "AuthenticationChallengeViewController.h"
-
+#import "CJSONDeserializer.h"
 
 @implementation URLLoaderViewController
 
