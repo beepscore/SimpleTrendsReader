@@ -42,12 +42,8 @@
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
+#pragma mark -
+#pragma mark memory management
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
@@ -69,14 +65,25 @@
 }
 
 
+#pragma mark -
 
--(void) appendTextToView: (NSString*) textToAppend
+- (void)appendTextToView: (NSString*) textToAppend
 {
 	NSString *oldText = urlContentsView.text;
 	urlContentsView.text = [oldText stringByAppendingString: textToAppend];
 }
 
--(void) loadURL {
+#pragma mark Parse JSON
+- (NSDictionary *)parseJSONString:(NSString *)aJSONString {
+    NSData *jsonData = [aJSONString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dictionary = [[CJSONDeserializer deserializer] deserializeAsDictionary:jsonData error:nil];
+    NSLog(@"%@", dictionary);
+    return dictionary;
+}
+
+#pragma mark -
+#pragma mark Communicate with web service
+- (void)loadURL {
 	NSLog (@"loadURL");
 	
 	urlContentsView.text = @"";
@@ -93,25 +100,24 @@
 	}
 	
 	// create request and connection
-//START:code.SimpleCocoaURLReader.initconnection
+    //START:code.SimpleCocoaURLReader.initconnection
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
 	NSURLConnection *connection = [[NSURLConnection alloc]
 					initWithRequest:request
 					delegate:self];
 	[connection release];
 	[request release];
-//END:code.SimpleCocoaURLReader.initconnection
+    //END:code.SimpleCocoaURLReader.initconnection
 	[activityIndicator startAnimating];
 	
 }
 
 
-// callbacks
+#pragma mark Callbacks
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	NSLog (@"connectionDidReceiveResponse");
 }
 
-//START:code.SimpleCocoaURLReader.didreceiveauthenticationchallenge
 - (void)connection:(NSURLConnection *)connection
 	didReceiveAuthenticationChallenge:
 	(NSURLAuthenticationChallenge *)challenge {
@@ -141,10 +147,8 @@
 		[challengeController release];
 	}
 }
-//END:code.SimpleCocoaURLReader.didreceiveauthenticationchallenge
 
 
-//START:code.SimpleCocoaURLReader.connectiondidreceivedata
 - (void)connection:(NSURLConnection *)connection
 					didReceiveData:(NSData *)data {
 	NSLog (@"connectionDidReceiveData");
@@ -154,15 +158,14 @@
 	if (newText != NULL) {
 		[self appendTextToView:newText];
         [self.trendsString appendString:newText];
-        NSLog(@"%@", self.trendsString);
 		[newText release];
 	}
 }
-//END:code.SimpleCocoaURLReader.connectiondidreceivedata
 
-//START:code.SimpleCocoaURLReader.connectionfinishanderror
+
 - (void) connectionDidFinishLoading: (NSURLConnection*) connection {
 	[activityIndicator stopAnimating];
+    [self parseJSONString:self.trendsString];
 }
 
 -(void) connection:(NSURLConnection *)connection
@@ -177,7 +180,14 @@
 	[errorAlert release];
 	[activityIndicator stopAnimating];
 }
-//END:code.SimpleCocoaURLReader.connectionfinishanderror
+
+
+#pragma mark -
+#pragma mark handle UI inputs
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	// Return YES for supported orientations
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
 
 
 // delegate method to handle user finishing with keyboard
@@ -194,7 +204,9 @@
 	[self loadURL];
 }
 
-//START:code.SimpleCocoaURLReader.handleauthenticationokforchallenge
+
+#pragma mark -
+#pragma mark Authentication
 - (void) handleAuthenticationOKForChallenge:
 			(NSURLAuthenticationChallenge *) aChallenge
 			withUser: (NSString*) username
@@ -209,7 +221,6 @@
 	[credential release];
 	[self dismissModalViewControllerAnimated:YES];
 }
-//END:code.SimpleCocoaURLReader.handleauthenticationokforchallenge
 
 
 - (void) handleAuthenticationCancelForChallenge: (NSURLAuthenticationChallenge *) aChallenge {
@@ -217,5 +228,6 @@
 	[self dismissModalViewControllerAnimated:YES];
 	[activityIndicator stopAnimating];
 }
+
 
 @end
