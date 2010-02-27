@@ -86,6 +86,22 @@
     return trendsDictionary;
 }
 
+#pragma mark -
+#pragma mark Display Trends
+- (void)displayTrends:(NSDictionary *)aTrendsDictionary {
+    
+    // Ref: http://moodle.extn.washington.edu/mod/forum/discuss.php?d=4675
+    NSMutableString *html = [[NSMutableString alloc] initWithString:@"<ol>\n"];
+
+    for ( NSDictionary* trend in aTrendsDictionary ) {
+        
+        [html appendFormat:@"    <li><a href=\"%@\">%@</a></li>\n", 
+         [trend objectForKey:@"url"], [trend objectForKey:@"name"]];
+    }
+    [html appendString:@"</ol>"];
+    NSLog(@"%@", html);
+    [html release];
+}
 
 #pragma mark -
 #pragma mark Communicate with web service
@@ -172,7 +188,7 @@
 - (void) connectionDidFinishLoading: (NSURLConnection*) connection {
 	[activityIndicator stopAnimating];
     NSDictionary *trendsDictionary = [self trendsDictionaryForTrendsJSONString:self.trendsJSONString];
-    NSLog(@"%@", trendsDictionary);
+    [self displayTrends:trendsDictionary];
 }
 
 
