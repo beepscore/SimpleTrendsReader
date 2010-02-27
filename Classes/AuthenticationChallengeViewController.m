@@ -17,6 +17,7 @@
 
 @implementation AuthenticationChallengeViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil loader: (URLLoaderViewController *) aLoader challenge: (NSURLAuthenticationChallenge*) aChallenge {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code
@@ -51,7 +52,16 @@
 }
 
 
+- (void)setView:(UIView *)newView
+{
+    if (nil == newView) {
+    }    
+    [super setView:newView];
+}
+
+
 - (void)dealloc {
+    
 	[super dealloc];
 }
 
@@ -65,7 +75,5 @@
 -(void) handleAuthenticationCancelClicked: (id) sender {
 	[loader handleAuthenticationCancelForChallenge:challenge];
 }
-
-
 
 @end

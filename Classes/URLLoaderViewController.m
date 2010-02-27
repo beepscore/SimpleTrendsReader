@@ -17,6 +17,8 @@
 
 @implementation URLLoaderViewController
 
+#pragma mark properties
+@synthesize trendsString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -30,15 +32,14 @@
  */
 - (void)loadView {
 	[super loadView];
-	[activityIndicator stopAnimating];
 }
 
 
-/*
- If you need to do additional setup after loading the view, override viewDidLoad.
+// If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad {
+    [activityIndicator stopAnimating];
+    self.trendsString = [[NSMutableString alloc] initWithString:@""];
 }
- */
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -53,7 +54,17 @@
 }
 
 
+- (void)setView:(UIView *)newView
+{
+    if (nil == newView) {
+        self.trendsString = nil;
+    }    
+    [super setView:newView];
+}
+
+
 - (void)dealloc {
+    [trendsString release], trendsString = nil;
 	[super dealloc];
 }
 
@@ -93,8 +104,6 @@
 	[activityIndicator startAnimating];
 	
 }
-
-
 
 
 // callbacks
@@ -144,6 +153,8 @@
 				encoding:NSUTF8StringEncoding];
 	if (newText != NULL) {
 		[self appendTextToView:newText];
+        [self.trendsString appendString:newText];
+        NSLog(@"%@", self.trendsString);
 		[newText release];
 	}
 }
@@ -206,6 +217,5 @@
 	[self dismissModalViewControllerAnimated:YES];
 	[activityIndicator stopAnimating];
 }
-
 
 @end
