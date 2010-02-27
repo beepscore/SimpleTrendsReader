@@ -19,10 +19,10 @@
 	IBOutlet UITextField *urlFieldView;
 	IBOutlet UITextView *urlContentsView;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
-    NSMutableString *trendsString;
+    NSMutableString *trendsJSONString;
 }
 
-@property(nonatomic,retain)NSMutableString *trendsString;
+@property(nonatomic,retain)NSMutableString *trendsJSONString;
 
 - (void) handleLoadPressed: (id) sender;
 - (void) handleAuthenticationOKForChallenge: (NSURLAuthenticationChallenge *) aChallenge withUser: (NSString*) username password: (NSString*) password;

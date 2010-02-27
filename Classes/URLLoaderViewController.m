@@ -18,7 +18,7 @@
 @implementation URLLoaderViewController
 
 #pragma mark properties
-@synthesize trendsString;
+@synthesize trendsJSONString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -38,7 +38,7 @@
 // If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad {
     [activityIndicator stopAnimating];
-    self.trendsString = [[NSMutableString alloc] initWithString:@""];
+    self.trendsJSONString = [[NSMutableString alloc] initWithString:@""];
 }
 
 
@@ -53,20 +53,19 @@
 - (void)setView:(UIView *)newView
 {
     if (nil == newView) {
-        self.trendsString = nil;
+        self.trendsJSONString = nil;
     }    
     [super setView:newView];
 }
 
 
 - (void)dealloc {
-    [trendsString release], trendsString = nil;
+    [trendsJSONString release], trendsJSONString = nil;
 	[super dealloc];
 }
 
 
 #pragma mark -
-
 - (void)appendTextToView: (NSString*) textToAppend
 {
 	NSString *oldText = urlContentsView.text;
@@ -74,12 +73,19 @@
 }
 
 #pragma mark Parse JSON
-- (NSDictionary *)parseJSONString:(NSString *)aJSONString {
+- (NSDictionary *)dictionaryForJSONString:(NSString *)aJSONString {
     NSData *jsonData = [aJSONString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dictionary = [[CJSONDeserializer deserializer] deserializeAsDictionary:jsonData error:nil];
-    NSLog(@"%@", dictionary);
     return dictionary;
 }
+
+
+- (NSDictionary *)trendsDictionaryForTrendsJSONString:(NSString *)aTrendsJSONString {
+    NSDictionary *outerDictionary = [self dictionaryForJSONString:aTrendsJSONString];
+    NSDictionary *trendsDictionary = [outerDictionary objectForKey:@"trends"];
+    return trendsDictionary;
+}
+
 
 #pragma mark -
 #pragma mark Communicate with web service
@@ -157,7 +163,7 @@
 				encoding:NSUTF8StringEncoding];
 	if (newText != NULL) {
 		[self appendTextToView:newText];
-        [self.trendsString appendString:newText];
+        [self.trendsJSONString appendString:newText];
 		[newText release];
 	}
 }
@@ -165,8 +171,10 @@
 
 - (void) connectionDidFinishLoading: (NSURLConnection*) connection {
 	[activityIndicator stopAnimating];
-    [self parseJSONString:self.trendsString];
+    NSDictionary *trendsDictionary = [self trendsDictionaryForTrendsJSONString:self.trendsJSONString];
+    NSLog(@"%@", trendsDictionary);
 }
+
 
 -(void) connection:(NSURLConnection *)connection
 					didFailWithError: (NSError *)error {
