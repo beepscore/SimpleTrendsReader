@@ -10,17 +10,16 @@
 //  http://apache.org/licenses/LICENSE-2.0
 //
 
-
 #import <UIKit/UIKit.h>
 
 @class URLLoaderViewController;
 
 @interface SimpleTrendsReaderAppDelegate : NSObject <UIApplicationDelegate> {
-	IBOutlet UIWindow *window;
+    UIWindow *window;
 	URLLoaderViewController *urlLoaderViewController;
 }
 
-@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) URLLoaderViewController *urlLoaderViewController;
 
 @end

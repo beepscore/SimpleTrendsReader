@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Cocoa URL</string>
+	<string>Trends</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>WigglyRoad.png</string>
+	<string>Icon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pragprog.amiphd.${PRODUCT_NAME:identifier}</string>
+	<string>com.beepscore.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,7 +26,5 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
-	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
 </dict>
 </plist>

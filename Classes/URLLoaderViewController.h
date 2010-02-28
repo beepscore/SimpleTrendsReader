@@ -9,22 +9,23 @@
 //  Licensed with the Apache 2.0 License
 //  http://apache.org/licenses/LICENSE-2.0
 //
-
-
 #import <UIKit/UIKit.h>
 
 
-@interface URLLoaderViewController : UIViewController <UITextFieldDelegate> {
+@interface URLLoaderViewController : UIViewController <UIWebViewDelegate> {
 
-	IBOutlet UITextField *urlFieldView;
-	IBOutlet UITextView *urlContentsView;
-	IBOutlet UIActivityIndicatorView *activityIndicator;
-    NSMutableString *trendsJSONString;
+	UIActivityIndicatorView *activityIndicator;
+	UIWebView *webView;
+    NSMutableString *resultsString;
 }
 
-@property(nonatomic,retain)NSMutableString *trendsJSONString;
+@property(nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(nonatomic,retain) IBOutlet UIWebView *webView;
+@property(nonatomic,retain)NSMutableString *resultsString;
 
-- (void) handleLoadPressed: (id) sender;
+- (void) handleRefresh:(id)sender;
+- (IBAction)handleGoBack:(id)sender;
+
 - (void) handleAuthenticationOKForChallenge: (NSURLAuthenticationChallenge *) aChallenge withUser: (NSString*) username password: (NSString*) password;
 - (void) handleAuthenticationCancelForChallenge: (NSURLAuthenticationChallenge *) aChallenge;
 @end

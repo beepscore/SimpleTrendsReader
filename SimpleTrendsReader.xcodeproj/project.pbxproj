@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		018A0E730E28AC780085606A /* AuthenticationChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018A0E720E28AC780085606A /* AuthenticationChallengeViewController.m */; };
 		018A0E770E28AD110085606A /* AuthenticationChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018A0E760E28AD110085606A /* AuthenticationChallengeView.xib */; };
-		018A0EB60E28B6640085606A /* WigglyRoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0EB50E28B6640085606A /* WigglyRoad.png */; };
 		0195946B0DE7751500CA0B24 /* URLLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0195946A0DE7751500CA0B24 /* URLLoaderViewController.m */; };
 		0195947B0DE776EC00CA0B24 /* URLLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0195947A0DE776EC00CA0B24 /* URLLoaderView.xib */; };
 		1D3623260D0F684500981E51 /* SimpleTrendsReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* SimpleTrendsReaderAppDelegate.m */; };
@@ -27,13 +26,14 @@
 		DECC596A1139A17000ABDB05 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC595F1139A17000ABDB05 /* CJSONDataSerializer.m */; };
 		DECC596B1139A17000ABDB05 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC59611139A17000ABDB05 /* CSerializedJSONData.m */; };
 		DECC596C1139A17000ABDB05 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC59631139A17000ABDB05 /* CDataScanner.m */; };
+		DECF8494113A4AB50032170C /* trends_top.html in Resources */ = {isa = PBXBuildFile; fileRef = DECF8493113A4AB40032170C /* trends_top.html */; };
+		DEF9D9E4113A027400DCEF2F /* trends.html in Resources */ = {isa = PBXBuildFile; fileRef = DEF9D9E3113A027400DCEF2F /* trends.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		018A0E710E28AC780085606A /* AuthenticationChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationChallengeViewController.h; sourceTree = "<group>"; };
 		018A0E720E28AC780085606A /* AuthenticationChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationChallengeViewController.m; sourceTree = "<group>"; };
 		018A0E760E28AD110085606A /* AuthenticationChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationChallengeView.xib; sourceTree = "<group>"; };
-		018A0EB50E28B6640085606A /* WigglyRoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WigglyRoad.png; sourceTree = "<group>"; };
 		019594690DE7751500CA0B24 /* URLLoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLLoaderViewController.h; sourceTree = "<group>"; };
 		0195946A0DE7751500CA0B24 /* URLLoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLLoaderViewController.m; sourceTree = "<group>"; };
 		0195947A0DE776EC00CA0B24 /* URLLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = URLLoaderView.xib; sourceTree = "<group>"; };
@@ -48,6 +48,7 @@
 		32CA4F630368D1EE00C91783 /* SimpleTrendsReader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTrendsReader_Prefix.pch; sourceTree = "<group>"; };
 		6EEAAC100F4E67D6004FABD2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6FFD3E113A5D2000DDFD16 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		DECC59511139A17000ABDB05 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
 		DECC59521139A17000ABDB05 /* NSCharacterSet_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCharacterSet_Extensions.m; sourceTree = "<group>"; };
 		DECC59531139A17000ABDB05 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
@@ -66,6 +67,8 @@
 		DECC59611139A17000ABDB05 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
 		DECC59621139A17000ABDB05 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		DECC59631139A17000ABDB05 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		DECF8493113A4AB40032170C /* trends_top.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends_top.html; sourceTree = "<group>"; };
+		DEF9D9E3113A027400DCEF2F /* trends.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE6FFD3E113A5D2000DDFD16 /* Debug.h */,
 				1D3623240D0F684500981E51 /* SimpleTrendsReaderAppDelegate.h */,
 				1D3623250D0F684500981E51 /* SimpleTrendsReaderAppDelegate.m */,
 				019594690DE7751500CA0B24 /* URLLoaderViewController.h */,
@@ -128,8 +132,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEF9D9E3113A027400DCEF2F /* trends.html */,
+				DECF8493113A4AB40032170C /* trends_top.html */,
 				6EEAAC100F4E67D6004FABD2 /* Icon.png */,
-				018A0EB50E28B6640085606A /* WigglyRoad.png */,
 				018A0E760E28AD110085606A /* AuthenticationChallengeView.xib */,
 				0195947A0DE776EC00CA0B24 /* URLLoaderView.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -234,7 +239,8 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				0195947B0DE776EC00CA0B24 /* URLLoaderView.xib in Resources */,
 				018A0E770E28AD110085606A /* AuthenticationChallengeView.xib in Resources */,
-				018A0EB60E28B6640085606A /* WigglyRoad.png in Resources */,
+				DEF9D9E4113A027400DCEF2F /* trends.html in Resources */,
+				DECF8494113A4AB50032170C /* trends_top.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +303,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -311,6 +318,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
